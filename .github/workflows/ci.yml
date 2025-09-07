@@ -26,8 +26,17 @@ jobs:
       - name: Compile
         run: sbt "++${{ matrix.scala }} compile"
 
-      - name: Run tests
-        run: sbt "++${{ matrix.scala }} test"
-
       - name: Build assembly
         run: sbt "++${{ matrix.scala }} cli/assembly"
+
+      - name: Run tests with coverage
+        run: sbt "++${{ matrix.scala }} coverage test coverageReport"
+
+      - name: Upload coverage reports
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-report-scala-${{ matrix.scala }}
+          path: |
+            lib/target/scala-${{ matrix.scala }}/scoverage-report/
+            lib/target/scala-${{ matrix.scala }}/coverage-report/
+          if-no-files-found: ignore

@@ -40,6 +40,55 @@ Run tests for all projects:
 sbt test
 ```
 
+## Code Coverage
+
+This project uses [Scoverage](https://github.com/scoverage/sbt-scoverage) for measuring code coverage.
+
+### Run Tests with Coverage
+
+To run tests and measure code coverage:
+
+```bash
+sbt "project lib" coverage test
+```
+
+### Generate Coverage Report
+
+To run tests with coverage and generate an HTML coverage report:
+
+```bash
+sbt "project lib" coverage test coverageReport
+```
+
+### View Coverage Report
+
+After generating the report, open the HTML coverage report in your browser:
+
+- **File location**: `./lib/target/scala-3.7.2/scoverage-report/index.html`
+- **Coverage metrics**: Shows statement and branch coverage percentages
+- **Interactive view**: Click through packages and files to see line-by-line coverage
+
+### Additional Coverage Commands
+
+```bash
+# Generate coverage report without re-running tests
+sbt "project lib" coverageReport
+
+# Clean coverage data
+sbt "project lib" coverage clean
+
+# Run coverage for all projects (if enabled)
+sbt coverage test coverageReport
+```
+
+### Coverage Output
+
+The coverage report includes:
+- **Statement coverage**: Percentage of executable statements covered
+- **Branch coverage**: Percentage of branches (if/else, match cases) covered
+- **Line-by-line highlighting**: Green for covered, red for uncovered lines
+- **XML reports**: Available for CI/CD integration at `lib/target/scala-3.7.2/scoverage-report/scoverage.xml`
+
 ## Run the CLI
 
 The CLI application reads JSON from stdin, parses it, and outputs a pretty-printed version or an error message.
