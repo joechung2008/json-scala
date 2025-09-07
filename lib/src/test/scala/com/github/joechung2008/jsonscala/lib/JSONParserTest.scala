@@ -3,7 +3,7 @@ package com.github.joechung2008.jsonscala.lib
 import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.matchers.should.Matchers
 
-class ParsersTest extends AnyFlatSpec with Matchers {
+class JSONParserTest extends AnyFlatSpec with Matchers {
 
   "JSONParser" should "parse a simple string" in {
     val result = JSONParser.parse("\"hello\"")

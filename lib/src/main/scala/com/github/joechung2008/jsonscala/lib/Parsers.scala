@@ -39,8 +39,10 @@ object ArrayParser {
 
   def parse(s: String): Either[String, Token] = {
     def parseRec(mode: ArrayParserMode, pos: Int, elements: List[Token]): Either[String, Token] =
-      if (pos >= s.length || mode == ArrayParserMode.End) {
+      if (mode == ArrayParserMode.End) {
         Right(ArrayToken(pos, elements.reverse))
+      } else if (pos >= s.length) {
+        Left("Incomplete array")
       } else {
         val ch = s.charAt(pos)
         mode match {
@@ -90,7 +92,12 @@ object JSONParser {
   private val WHITESPACE = "[ \\n\\r\\t]".r
 
   def parse(s: String): Either[String, Token] =
-    ValueParser.parse(s, Some(WHITESPACE))
+    ValueParser.parse(s, Some(WHITESPACE)) match {
+      case Right(token) =>
+        if (token.skip == s.length) Right(token)
+        else Left(s"Unexpected characters after JSON value at position ${token.skip}")
+      case Left(e)      => Left(e)
+    }
 }
 
 sealed trait NumberParserMode
@@ -209,8 +216,10 @@ object ObjectParser {
 
   def parse(s: String): Either[String, Token] = {
     def parseRec(mode: ObjectParserMode, pos: Int, members: List[PairToken]): Either[String, Token] =
-      if (pos >= s.length || mode == ObjectParserMode.End) {
+      if (mode == ObjectParserMode.End) {
         Right(ObjectToken(pos, members.reverse))
+      } else if (pos >= s.length) {
+        Left("Incomplete object")
       } else {
         val ch = s.charAt(pos)
         mode match {
@@ -332,8 +341,10 @@ object StringParserMode {
 object StringParser {
   def parse(s: String): Either[String, Token] = {
     def parseRec(mode: StringParserMode, pos: Int, value: String): Either[String, Token] =
-      if (pos >= s.length || mode == StringParserMode.End) {
+      if (mode == StringParserMode.End) {
         Right(StringToken(pos, value))
+      } else if (pos >= s.length) {
+        Left("Incomplete string")
       } else {
         val ch = s.charAt(pos)
         mode match {
