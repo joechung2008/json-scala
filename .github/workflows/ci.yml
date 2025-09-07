@@ -24,13 +24,13 @@ jobs:
           java-version: 24=tgz+https://github.com/adoptium/temurin24-binaries/releases/download/jdk-24%2B36/OpenJDK24U-jdk_x64_linux_hotspot_24_36.tar.gz
 
       - name: Compile
-        run: sbt "++${{ matrix.scala }} ; reload ; compile"
+        run: sbt "++${{ matrix.scala }} ; compile"
 
       - name: Build assembly
-        run: sbt "++${{ matrix.scala }} ; reload ; cli/assembly"
+        run: sbt "++${{ matrix.scala }} ; cli/assembly"
 
       - name: Run tests with coverage
-        run: sbt "++${{ matrix.scala }} ; reload ; coverage test coverageReport"
+        run: sbt "++${{ matrix.scala }} ; coverage ; test ; coverageReport"
 
       - name: Upload coverage reports
         uses: actions/upload-artifact@v4
