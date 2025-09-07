@@ -70,6 +70,34 @@ Pipe JSON input to the script:
 echo '{"name": "John", "age": 30}' | ./bin/cli
 ```
 
+### Windows
+
+On Windows, use the provided batch script or PowerShell script:
+
+**Batch (cmd.exe):**
+
+```cmd
+bin\cli.cmd
+```
+
+Pipe JSON input:
+
+```cmd
+echo {"name": "John", "age": 30} | bin\cli.cmd
+```
+
+**PowerShell:**
+
+```powershell
+.\bin\cli.ps1
+```
+
+Pipe JSON input:
+
+```powershell
+echo '{"name": "John", "age": 30}' | .\bin\cli.ps1
+```
+
 ### Examples
 
 Valid JSON:
@@ -79,6 +107,7 @@ echo '[1, 2, {"key": "value"}]' | ./bin/cli
 ```
 
 Output:
+
 ```
 [
   1,
@@ -96,6 +125,7 @@ echo '{"name": "John", "age":}' | ./bin/cli
 ```
 
 Output:
+
 ```
 Unexpected delimiter
 ```
