@@ -1,0 +1,42 @@
+# Scala
+target/
+*.class
+*.log
+
+# Metals
+.metals/
+.bsp/
+.scala-build/
+
+# IntelliJ IDEA
+.idea/
+*.iml
+
+# VS Code
+.vscode/
+!.vscode/extensions.json
+!.vscode/settings.json
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Build artifacts
+dist/
+build/
+
+# Temporary files
+*.tmp
+*.swp
+*.bak
+
+# Logs
+logs/
+*.log
+
+# Environment
+.env
+.env.local
+
+# F#
+fsharp
