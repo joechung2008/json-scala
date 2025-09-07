@@ -78,7 +78,10 @@ class JSONParserTest extends AnyFlatSpec with Matchers {
   it should "fail on JSON with trailing non-whitespace characters" in {
     val result = JSONParser.parse("\"hello\"world")
     result shouldBe a [Left[?, ?]]
-    result.left.get should include ("Unexpected characters after JSON value")
+    result match {
+      case Left(error) => error should include ("Unexpected characters after JSON value")
+      case Right(_) => fail("Expected parsing to fail")
+    }
   }
 
   it should "fail on numbers with trailing non-whitespace characters" in {
@@ -89,6 +92,9 @@ class JSONParserTest extends AnyFlatSpec with Matchers {
   it should "fail on booleans with trailing non-whitespace characters" in {
     val result = JSONParser.parse("truefalse")
     result shouldBe a [Left[?, ?]]
-    result.left.get should include ("Unexpected characters after JSON value")
+    result match {
+      case Left(error) => error should include ("Unexpected characters after JSON value")
+      case Right(_) => fail("Expected parsing to fail")
+    }
   }
 }
