@@ -18,8 +18,10 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v4
 
-      - name: Set up sbt
-        uses: coursier/setup-sbt@v1
+      - name: Set up Scala
+        uses: olafurpg/setup-scala@v14
+        with:
+          java-version: openjdk@24
 
       - name: Compile
         run: sbt "++${{ matrix.scala }} compile"
