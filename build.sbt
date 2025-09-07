@@ -13,5 +13,5 @@ lazy val lib = (project in file("lib"))
 lazy val cli = (project in file("cli"))
   .dependsOn(lib)
   .settings(
-    mainClass := Some("com.github.joechung2008.jsonscala.cli.Main")
+    mainClass := Some("com.github.jsonscala.cli.Main")
   )

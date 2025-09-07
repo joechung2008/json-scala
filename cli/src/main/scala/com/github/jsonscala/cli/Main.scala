@@ -1,6 +1,6 @@
-package com.github.joechung2008.jsonscala.cli
+package com.github.jsonscala.cli
 
-import com.github.joechung2008.jsonscala.lib._
+import com.github.jsonscala.lib._
 import scala.io.Source
 
 object Main {

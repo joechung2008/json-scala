@@ -1,4 +1,4 @@
-package com.github.joechung2008.jsonscala.lib
+package com.github.jsonscala.lib
 
 import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.matchers.should.Matchers

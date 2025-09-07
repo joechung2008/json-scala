@@ -1,4 +1,4 @@
-package com.github.joechung2008.jsonscala.lib
+package com.github.jsonscala.lib
 
 sealed trait StringParserMode
 object StringParserMode {
