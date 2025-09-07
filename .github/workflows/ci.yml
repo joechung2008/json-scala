@@ -12,7 +12,7 @@ jobs:
 
     strategy:
       matrix:
-        scala: ["2.13.16", "3.7.2"]
+        scala: ["2.13", "3.7.2"]
 
     steps:
       - name: Check out code
