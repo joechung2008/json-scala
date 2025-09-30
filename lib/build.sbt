@@ -1,3 +1,3 @@
 name := "shared-lib"
 
-coverageEnabled := true
+coverageEnabled := sys.props.getOrElse("env", "dev") != "prod"
