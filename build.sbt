@@ -1,5 +1,5 @@
-ThisBuild / scalaVersion := "3.7.2"
-ThisBuild / crossScalaVersions := Seq("2.13.16", "3.7.2")
+ThisBuild / scalaVersion := "3.8.3"
+ThisBuild / crossScalaVersions := Seq("2.13.18", "3.8.3")
 ThisBuild / scalacOptions += "-deprecation"
 
 lazy val root = (project in file("."))
@@ -7,7 +7,7 @@ lazy val root = (project in file("."))
 
 lazy val lib = (project in file("lib"))
   .settings(
-    libraryDependencies += "org.scalatest" %% "scalatest" % "3.2.18" % Test
+    libraryDependencies += "org.scalatest" %% "scalatest" % "3.2.19" % Test
   )
 
 lazy val cli = (project in file("cli"))

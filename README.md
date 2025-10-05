@@ -1,6 +1,6 @@
 # json-scala
 
-Port of the .NET 8.0 F# JSON parser to Scala 3.7.2.
+Port of the .NET 8.0 F# JSON parser to Scala 3.8.3.
 
 ## License
 
@@ -12,7 +12,7 @@ MIT
 
 ## Prerequisites
 
-- [Scala](https://www.scala-lang.org/) (version 3.7.2 or later)
+- [Scala](https://www.scala-lang.org/) (version 3.8.3 or later)
 - [sbt](https://www.scala-sbt.org/) (version 1.x or later)
 - sbt-assembly plugin (included in project/plugins.sbt)
 
@@ -84,6 +84,7 @@ sbt coverage test coverageReport
 ### Coverage Output
 
 The coverage report includes:
+
 - **Statement coverage**: Percentage of executable statements covered
 - **Branch coverage**: Percentage of branches (if/else, match cases) covered
 - **Line-by-line highlighting**: Green for covered, red for uncovered lines
@@ -104,7 +105,7 @@ This creates a fat JAR at `cli/target/scala-3.7.2/cli-app-assembly-0.1.0-SNAPSHO
 Run the CLI with the JAR:
 
 ```bash
-java -jar cli/target/scala-3.7.2/cli-app-assembly-0.1.0-SNAPSHOT.jar
+java -jar cli/target/scala-3.7.3/cli-app-assembly-0.1.0-SNAPSHOT.jar
 ```
 
 Use the Bash script to run the JAR:
