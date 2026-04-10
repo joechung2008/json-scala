@@ -18,10 +18,20 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v4
 
-      - name: Set up Scala
-        uses: olafurpg/setup-scala@v14
+      - name: Set up JVM
+        uses: actions/setup-java@v4
         with:
-          java-version: 24=tgz+https://github.com/adoptium/temurin24-binaries/releases/download/jdk-24%2B36/OpenJDK24U-jdk_x64_linux_hotspot_24_36.tar.gz
+          distribution: 'temurin'
+          java-version: '24'
+
+      - name: Install SBT
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y apt-transport-https curl gnupg
+          echo "deb https://repo.scala-sbt.org/scalasbt/debian all main" | sudo tee /etc/apt/sources.list.d/sbt.list
+          curl -sL "https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x2EE0EA64E40A89B84B2DF73499E82A75642AC823" | sudo apt-key add
+          sudo apt-get update
+          sudo apt-get install -y sbt
 
       - name: Compile
         run: sbt "++${{ matrix.scala }} ; compile"
